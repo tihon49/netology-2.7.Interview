@@ -36,14 +36,16 @@ class Stack:
 
     #возвращает верхний элемент стека, но не удаляет его. Стек не меняется.
     def peek(self):
-        return Stack.stack_list[-1]
-
+        try:
+            return Stack.stack_list[-1]
+        except IndexError:
+            return 'Trying to peek from empty list'
 
     #возвращает количество элементов в стеке.
     def size(self):
         return len(Stack.stack_list)
 
-   #проверка соответствия скобок
+    #проверка соответствия скобок
     def check_brackets(self, string):
         brackets_open = ('(', '[', '{', '<')
         brackets_closed = (')', ']', '}', '>')
@@ -68,6 +70,7 @@ def main():
     #задача №1
     my_stack = Stack(15)
     my_stack2 = Stack(35)
+    print(my_stack.pop())
     print(my_stack.isEmpty())
     my_stack.push()
     my_stack2.push()
@@ -80,6 +83,7 @@ def main():
     print(my_stack.pop())
     print(Stack.stack_list)
     print(my_stack.isEmpty())
+    print(my_stack.peek())
 
     #задача №2
     str1 = '[{([[[<>]]])(<>)(){}}]' 
