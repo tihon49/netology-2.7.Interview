@@ -24,6 +24,7 @@ class Stack:
         self.data = data
         if self.data:
             Stack.stack_list.append(self.data)
+            return self.data
         else:
             print('Trying to push an empty list')
 
@@ -77,6 +78,7 @@ def main():
 
     my_stack.push('Bob')
     my_stack2.push(25)
+    my_stack.push('777')
 
     print(my_stack.pop())
     print(my_stack.isEmpty())
@@ -88,13 +90,18 @@ def main():
     str2 = ']()(){<>}[[()]]' 
     str3 = '[(sjd),"2"],{"name": "netology"}, [<>]'
     str4 = '{[[[[((()))]]<]>]}'
-    str_list = [str1, str2, str3, str4]
+ 
+    print()
+    print(my_stack.check_brackets(my_stack.push(str1)))
+    my_stack.push(str2)
+    print(my_stack.check_brackets(my_stack.peek()))
+    print(my_stack.check_brackets(my_stack.pop()))
+    my_stack.push(str4)
+    my_stack.push(str3)
+    print(my_stack.check_brackets(my_stack.pop()))
+    print(my_stack.check_brackets(my_stack.peek()))
 
-    for i in str_list:
-        my_stack.push(i)
-        print(my_stack.check_brackets(my_stack.pop()))
 
-        
 
 if __name__ == '__main__':
     main()
