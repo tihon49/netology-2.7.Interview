@@ -10,8 +10,8 @@ class Stack:
     '''
     stack_list = []
 
-    def __init__(self, lst):
-        self.list = lst
+    # def __init__(self, lst):
+    #     self.list = lst
 
     #проверка стека на пустоту. Метод возвращает True или False
     def isEmpty(self):
@@ -20,9 +20,10 @@ class Stack:
         return False
     
     #добавляет новый элемент на вершину стека. Метод ничего не возвращает.
-    def push(self):
-        if self.list:
-            Stack.stack_list.append(self.list)
+    def push(self, data):
+        self.data = data
+        if self.data:
+            Stack.stack_list.append(self.data)
         else:
             print('Trying to push an empty list')
 
@@ -68,21 +69,18 @@ class Stack:
 
 def main():
     #задача №1
-    my_stack = Stack(15)
-    my_stack2 = Stack(35)
+    
+    my_stack = Stack()
+    my_stack2 = Stack()
+
+    print(my_stack.isEmpty())
+
+    my_stack.push('Bob')
+    my_stack2.push(25)
+
     print(my_stack.pop())
     print(my_stack.isEmpty())
-    my_stack.push()
-    my_stack2.push()
-    print(my_stack.peek())
     print(my_stack.size())
-    print(my_stack.isEmpty())
-    print(Stack.stack_list)
-    print(my_stack.pop())
-    print(Stack.stack_list)
-    print(my_stack.pop())
-    print(Stack.stack_list)
-    print(my_stack.isEmpty())
     print(my_stack.peek())
 
     #задача №2
@@ -90,11 +88,13 @@ def main():
     str2 = ']()(){<>}[[()]]' 
     str3 = '[(sjd),"2"],{"name": "netology"}, [<>]'
     str4 = '{[[[[((()))]]<]>]}'
+    str_list = [str1, str2, str3, str4]
 
-    print(my_stack.check_brackets(str1))
-    print(my_stack.check_brackets(str2))
-    print(my_stack.check_brackets(str3))
-    print(my_stack.check_brackets(str4))
+    for i in str_list:
+        my_stack.push(i)
+        print(my_stack.check_brackets(my_stack.pop()))
+
+        
 
 if __name__ == '__main__':
     main()
