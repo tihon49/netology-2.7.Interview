@@ -47,24 +47,26 @@ class Stack:
     def size(self):
         return len(Stack.stack_list)
 
-    #проверка соответствия скобок
-    def check_brackets(self, string):
-        brackets_open = ('(', '[', '{', '<')
-        brackets_closed = (')', ']', '}', '>')
-        stack = []
-        for i in string:
-            if i in brackets_open:
-                stack.append(i)
-            if i in brackets_closed:    
-                if len(stack) == 0:
-                    return 'Небалансированно'
-                index = brackets_closed.index(i)
-                open_bracket = brackets_open[index]
-                if stack[-1] == open_bracket:
-                    stack = stack[:-1]  
-                else: 
-                    return 'Небалансированно'
-        return 'Сбалансированно'
+
+
+#проверка соответствия скобок
+def check_brackets(stack, string):
+    brackets_open = ('(', '[', '{', '<')
+    brackets_closed = (')', ']', '}', '>')
+
+    for i in string:
+        if i in brackets_open:
+            stack.push(i)
+        if i in brackets_closed:    
+            if len(stack.stack_list) == 0:
+                return 'Небалансированно'
+            index = brackets_closed.index(i)
+            open_bracket = brackets_open[index]
+            if stack.stack_list[-1] == open_bracket:
+                stack.pop()  
+            else: 
+                return 'Небалансированно'
+    return 'Сбалансированно'
 
 
 
@@ -84,6 +86,8 @@ def main():
     print(my_stack.isEmpty())
     print(my_stack.size())
     print(my_stack.peek())
+    print(my_stack.pop())
+    print(my_stack.pop())
 
     #задача №2
     str1 = '[{([[[<>]]])(<>)(){}}]' 
@@ -92,14 +96,11 @@ def main():
     str4 = '{[[[[((()))]]<]>]}'
  
     print()
-    print(my_stack.check_brackets(my_stack.push(str1)))
-    my_stack.push(str2)
-    print(my_stack.check_brackets(my_stack.peek()))
-    print(my_stack.check_brackets(my_stack.pop()))
-    my_stack.push(str4)
-    my_stack.push(str3)
-    print(my_stack.check_brackets(my_stack.pop()))
-    print(my_stack.check_brackets(my_stack.peek()))
+    my_stack = Stack()
+    print(check_brackets(my_stack, str1))
+    print(check_brackets(my_stack, str2))
+    print(check_brackets(my_stack, str3))
+    print(check_brackets(my_stack, str4))
 
 
 
