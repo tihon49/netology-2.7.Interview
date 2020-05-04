@@ -72,7 +72,6 @@ def check_brackets(stack, string):
 
 def main():
     #задача №1
-    
     my_stack = Stack()
     my_stack2 = Stack()
 
@@ -96,7 +95,6 @@ def main():
     str4 = '{[[[[((()))]]<]>]}'
  
     print()
-    my_stack = Stack()
     print(check_brackets(my_stack, str1))
     print(check_brackets(my_stack, str2))
     print(check_brackets(my_stack, str3))
